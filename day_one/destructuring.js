@@ -5,7 +5,6 @@ const array = ["reed", "kabuzi", 30];
 
 // to ignore elements can be done by just putting a comma and leave go to the next one. i just skipped the second element of the array
 const [name, , age] = array;
-console.log(age);
 
 // we can use destructuring with any iterable
 
@@ -28,19 +27,16 @@ const agent = {
 
 const arrayFromObject = Object.entries(agent);
 for (let [key, value] of arrayFromObject) {
-  console.log(`${key}:${value}`);
+  //console.log(`${key}:${value}`);
 }
 // with destructuring we can swap the value of two variables easily
 let admin = "tycoon";
 let standard = "queen";
 
 [admin, standard] = [standard, admin];
-console.log(admin);
 
 // The rest ... it is not obliged to be the word rest it can be any other word.
 let [test1, test3, test2, ...rest] = ["Reed", "Kabuzi", 23, 13, 45, "Herman"];
-
-console.log(rest);
 
 // nested destructuring but the name of the variable on the left have to match the name of the variable on right.
 
@@ -59,4 +55,23 @@ let {
   computer,
 } = items;
 
-console.log(computer);
+// smart log parameters
+
+let human = {
+  name: "Tycoon",
+  age: 20,
+};
+
+function displayHuman({
+  name = "No name",
+  age = "None",
+  assets = ["Radio", "Tele"],
+}) {
+  console.log(
+    `My name is ${name} I am ${age} year${
+      age > 1 ? "s" : ""
+    } old and my assets are ${assets.join(" and ")}`
+  );
+}
+
+displayHuman(human);
