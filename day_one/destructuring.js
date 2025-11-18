@@ -4,7 +4,7 @@ const array = ["reed", "kabuzi", 30];
 //const [name, surname, age] = array;
 
 // to ignore elements can be done by just putting a comma and leave go to the next one. i just skipped the second element of the array
-const [name, , age] = array;
+//const [name, , age] = array;
 
 // we can use destructuring with any iterable
 
@@ -13,9 +13,9 @@ const [one, two, three] = new Set([1, 2, 3]);
 
 //assignable.
 
-let user = {};
-[user.id, user.name] = "John Does".split(" "); // we just assigned the user ID and user Name to an empty user object.
-console.log(user);
+// let user = {};
+// [user.id, user.name] = "John Does".split(" "); // we just assigned the user ID and user Name to an empty user object.
+// console.log(user);
 
 //looping with entries
 
@@ -67,11 +67,53 @@ function displayHuman({
   age = "None",
   assets = ["Radio", "Tele"],
 }) {
-  console.log(
-    `My name is ${name} I am ${age} year${
-      age > 1 ? "s" : ""
-    } old and my assets are ${assets.join(" and ")}`
-  );
+  //   console.log(
+  //     `My name is ${name} I am ${age} year${
+  //       age > 1 ? "s" : ""
+  //     } old and my assets are ${assets.join(" and ")}`
+  //   );
 }
 
 displayHuman(human);
+
+// Exercice
+
+// let user = {
+//   name: "John",
+//   years: 30,
+// };
+// let { name, years: age, isAdmin = false } = user;
+
+// console.log(name, age, isAdmin);
+
+//There is a salaries object:
+
+let salaries = {
+  John: 100,
+  Pete: 300,
+  Mary: 2950,
+  Reed: 2000,
+  Maitre: 2950,
+};
+//Create the function topSalary(salaries) that returns the name of the top-paid person.
+
+// If salaries is empty, it should return null.
+// If there are multiple top-paid persons, return any of them.
+// P.S. Use Object.entries and destructuring to iterate over key/value pairs.
+
+function topSalary(array) {
+  let anArrayFromObject = Object.entries(array);
+  let salariesAmount = [];
+  let topPerson = "Tycoon";
+
+  for (let [key, entry] of anArrayFromObject) {
+    salariesAmount.push(entry);
+    salariesAmount.sort((a, b) => b - a);
+    if (salariesAmount[0] === entry) {
+      topPerson = key;
+    }
+  }
+  return topPerson;
+}
+
+console.log("The Top salary goes to " + topSalary(salaries));
