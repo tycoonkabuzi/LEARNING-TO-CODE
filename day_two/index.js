@@ -12,3 +12,40 @@ console.log(newArray);
 
 const modifiedArray = newArray.slice(0, 2);
 console.log(modifiedArray);
+
+// Concat: This creates a new arrays adding data from other arrays
+
+let concArray = [1, 2];
+
+console.log(concArray.concat([3, 4]));
+console.log(concArray.concat([5, 6]));
+
+// Transform an array
+
+//map most useful and often used
+
+const mapArray = [2, 13, 3, 4];
+
+let transformedMapArray = mapArray.map((item) => item * 4);
+console.log(transformedMapArray);
+
+//sort change element order of an array
+// mapArray.sort();
+// console.log(mapArray);
+
+// reverse method
+mapArray.reverse();
+console.log(mapArray);
+
+// Split and join methods
+const names = "Reed,James,Dieum,Tycoon,Queen";
+
+const arrayNames = names.split(",");
+console.log(names);
+
+// Join does the very contrary, which is to join the array into a string.
+
+const stringArray = arrayNames.join(" & ");
+console.log(stringArray);
+
+//reduce & reduceRight
