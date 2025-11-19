@@ -54,3 +54,18 @@ const arrayBeforeReduce = [1, 2, 3, 4, 5];
 
 const reducedArray = arrayBeforeReduce.reduce((sum, digit) => sum + digit, 0);
 console.log(reducedArray);
+
+console.log("============================Tasks============================");
+
+function camelize(word) {
+  return word
+    .split("-")
+    .map((singleWord, index) =>
+      index === 0
+        ? singleWord
+        : singleWord[0].toUpperCase() + singleWord.slice(1)
+    )
+    .join("");
+}
+
+console.log(camelize("i-am-vey-glad-to-be-part-of-this"));
