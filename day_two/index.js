@@ -49,3 +49,8 @@ const stringArray = arrayNames.join(" & ");
 console.log(stringArray);
 
 //reduce & reduceRight
+
+const arrayBeforeReduce = [1, 2, 3, 4, 5];
+
+const reducedArray = arrayBeforeReduce.reduce((sum, digit) => sum + digit, 0);
+console.log(reducedArray);
