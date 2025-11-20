@@ -147,19 +147,30 @@ console.log("============================Tasks============================");
 // Usage example:
 
 class Calculator {
+  constructor() {
+    this.method = {
+      "+": (a, b) => a + b,
+      "-": (a, b) => a - b,
+    };
+  }
+
+  addMethod(operator, theFunction) {
+    this.method[operator] = theFunction;
+  }
   calculate(string) {
-    let arrayString = string.split(" ");
-    let [firstNumber, sign, secondNumber] = arrayString;
-    switch (sign) {
-      case "+":
-        return Number(firstNumber) + Number(secondNumber);
-      case "-":
-        return Number(firstNumber) - Number(secondNumber);
-      default:
-        return "This sign is not found, would you like to add it ?";
-    }
+    let [firstNumber, sign, secondNumber] = string.split(" ");
+    firstNumber = +firstNumber; // convert to number
+    secondNumber = +secondNumber;
+    return this.method[sign](firstNumber, secondNumber);
   }
 }
 
 const calc = new Calculator();
-alert(calc.calculate("103 - 7")); // 10
+console.log(calc.calculate("4 + 2")); // 6
+let powerCalc = new Calculator();
+powerCalc.addMethod("*", (a, b) => a * b);
+powerCalc.addMethod("/", (a, b) => a / b);
+powerCalc.addMethod("**", (a, b) => a ** b);
+
+let result = powerCalc.calculate("3 ** 3");
+console.log(result);
