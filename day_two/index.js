@@ -114,9 +114,52 @@ console.log("============================Tasks============================");
 
 // console.log(list); // [3, 1]
 
-let arr = [5, 2, 1, -10, 8];
+// let arr = [5, 2, 1, -10, 8];
 
-// ... your code to sort it in decreasing order
+// // ... your code to sort it in decreasing order
 
-arr.sort((a, b) => b - a);
-alert(arr); // 8, 5, 2, 1, -10
+// arr.sort((a, b) => b - a);
+// alert(arr); // 8, 5, 2, 1, -10
+
+// We have an array of strings arr. We’d like to have a sorted copy of it, but keep arr unmodified.
+
+// Create a function copySorted(arr) that returns such a copy.
+
+// let arr = ["HTML", "JavaScript", "CSS"];
+
+// function copySorted(arr) {
+//   let copiedArray = arr.map((element) => element);
+//   copiedArray.sort((a, b) => a.localeCompare(b));
+//   return copiedArray;
+// }
+
+// let sorted = copySorted(arr);
+
+// console.log(sorted); // CSS, HTML, JavaScript
+// console.log(arr); // HTML, JavaScript, CSS (no changes)
+
+//Create a constructor function Calculator that creates “extendable” calculator objects.
+
+// The task consists of two parts.
+
+// First, implement the method calculate(str) that takes a string like "1 + 2" in the format “NUMBER operator NUMBER” (space-delimited) and returns the result. Should understand plus + and minus -.
+
+// Usage example:
+
+class Calculator {
+  calculate(string) {
+    let arrayString = string.split(" ");
+    let [firstNumber, sign, secondNumber] = arrayString;
+    switch (sign) {
+      case "+":
+        return Number(firstNumber) + Number(secondNumber);
+      case "-":
+        return Number(firstNumber) - Number(secondNumber);
+      default:
+        return "This sign is not found, would you like to add it ?";
+    }
+  }
+}
+
+const calc = new Calculator();
+alert(calc.calculate("103 - 7")); // 10
