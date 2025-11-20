@@ -2,7 +2,7 @@
 const array = ["I", "am", "the", "best"];
 array.splice(0, 1); // here the second parameter is the number of elements to be deleted. so we say from index 0 delete 1 element and in this case it is the first element because it is on the index 0
 
-console.log(array);
+//console.log(array);
 // Here we just deleted from the array and replaced by new data, by mentioning the index from which we will start and how many elements to be removed and what would be the replacement.
 const newArray = ["create", "new", "possibilites"];
 //newArray.splice(0, 2, "hello", "kitty");
@@ -11,14 +11,14 @@ console.log(newArray);
 // now let go to the method slice, looking like splice but different this one does not modify the array, it creates a copy.
 
 const modifiedArray = newArray.slice(0, 2);
-console.log(modifiedArray);
+//console.log(modifiedArray);
 
 // Concat: This creates a new arrays adding data from other arrays
 
 let concArray = [1, 2];
 
-console.log(concArray.concat([3, 4]));
-console.log(concArray.concat([5, 6]));
+// console.log(concArray.concat([3, 4]));
+// console.log(concArray.concat([5, 6]));
 
 // Transform an array
 
@@ -27,7 +27,7 @@ console.log(concArray.concat([5, 6]));
 const mapArray = [2, 13, 3, 4];
 
 let transformedMapArray = mapArray.map((item) => item * 4);
-console.log(transformedMapArray);
+//console.log(transformedMapArray);
 
 //sort change element order of an array
 // mapArray.sort();
@@ -35,37 +35,81 @@ console.log(transformedMapArray);
 
 // reverse method
 mapArray.reverse();
-console.log(mapArray);
+//console.log(mapArray);
 
 // Split and join methods
 const names = "Reed,James,Dieum,Tycoon,Queen";
 
 const arrayNames = names.split(",");
-console.log(names);
+//console.log(names);
 
 // Join does the very contrary, which is to join the array into a string.
 
 const stringArray = arrayNames.join(" & ");
-console.log(stringArray);
+//console.log(stringArray);
 
 //reduce & reduceRight
 
 const arrayBeforeReduce = [1, 2, 3, 4, 5];
 
 const reducedArray = arrayBeforeReduce.reduce((sum, digit) => sum + digit, 0);
-console.log(reducedArray);
+//console.log(reducedArray);
 
 console.log("============================Tasks============================");
 
-function camelize(word) {
-  return word
-    .split("-")
-    .map((singleWord, index) =>
-      index === 0
-        ? singleWord
-        : singleWord[0].toUpperCase() + singleWord.slice(1)
-    )
-    .join("");
+// function camelize(word) {
+//   return word
+//     .split("-")
+//     .map((singleWord, index) =>
+//       index === 0
+//         ? singleWord
+//         : singleWord[0].toUpperCase() + singleWord.slice(1)
+//     )
+//     .join("");
+// }
+
+// console.log(camelize("i-am-vey-glad-to-be-part-of-this"));
+
+//second task
+
+//let arr = [5, 3, 8, 1];
+//that gets an array arr, looks for elements with values higher or equal to a and lower or equal to b and return a result as an array.
+
+// function filterRange(arr, a, b) {
+//   return arr.filter((item) => item >= a && item <= b);
+// }
+
+// let filtered = filterRange(arr, 1, 4);
+
+// console.log(filtered); // 3,1 (matching values)
+
+// console.log(arr); // 5,3,8,1 (not modified)
+
+// Filter range "in place"
+// importance: 4
+// Write a function filterRangeInPlace(arr, a, b) that gets an array arr and removes from it all values except those that are between a and b. The test is: a ≤ arr[i] ≤ b.
+
+// The function should only modify the array. It should not return anything.
+
+// For instance:
+
+let list = [5, 3, 8, 1];
+
+function filterRangeInPlace(arr, a, b) {
+  const removedNumber = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (a <= arr[i] && arr[i] <= b) {
+      //arr.splice(0, arr.length, arr[i]);
+      removedNumber.push(arr[i]);
+    }
+  }
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (!removedNumber.includes(arr[i])) {
+      arr.splice(i, 1);
+    }
+  }
 }
 
-console.log(camelize("i-am-vey-glad-to-be-part-of-this"));
+filterRangeInPlace(list, 1, 4); // removed the numbers except from 1 to 4
+
+console.log(list); // [3, 1]
