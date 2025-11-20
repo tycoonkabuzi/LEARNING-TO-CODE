@@ -93,23 +93,30 @@ console.log("============================Tasks============================");
 
 // For instance:
 
-let list = [5, 3, 8, 1];
+// let list = [5, 3, 8, 1];
 
-function filterRangeInPlace(arr, a, b) {
-  const removedNumber = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (a <= arr[i] && arr[i] <= b) {
-      //arr.splice(0, arr.length, arr[i]);
-      removedNumber.push(arr[i]);
-    }
-  }
-  for (let i = arr.length - 1; i >= 0; i--) {
-    if (!removedNumber.includes(arr[i])) {
-      arr.splice(i, 1);
-    }
-  }
-}
+// function filterRangeInPlace(arr, a, b) {
+//   const removedNumber = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (a <= arr[i] && arr[i] <= b) {
+//       //arr.splice(0, arr.length, arr[i]);
+//       removedNumber.push(arr[i]);
+//     }
+//   }
+//   for (let i = arr.length - 1; i >= 0; i--) {
+//     if (!removedNumber.includes(arr[i])) {
+//       arr.splice(i, 1);
+//     }
+//   }
+// }
 
-filterRangeInPlace(list, 1, 4); // removed the numbers except from 1 to 4
+// filterRangeInPlace(list, 1, 4); // removed the numbers except from 1 to 4
 
-console.log(list); // [3, 1]
+// console.log(list); // [3, 1]
+
+let arr = [5, 2, 1, -10, 8];
+
+// ... your code to sort it in decreasing order
+
+arr.sort((a, b) => b - a);
+alert(arr); // 8, 5, 2, 1, -10
