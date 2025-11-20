@@ -38,14 +38,14 @@ mapArray.reverse();
 //console.log(mapArray);
 
 // Split and join methods
-const names = "Reed,James,Dieum,Tycoon,Queen";
+//const names = "Reed,James,Dieum,Tycoon,Queen";
 
-const arrayNames = names.split(",");
+//const arrayNames = names.split(",");
 //console.log(names);
 
 // Join does the very contrary, which is to join the array into a string.
 
-const stringArray = arrayNames.join(" & ");
+//const stringArray = arrayNames.join(" & ");
 //console.log(stringArray);
 
 //reduce & reduceRight
@@ -146,31 +146,46 @@ console.log("============================Tasks============================");
 
 // Usage example:
 
-class Calculator {
-  constructor() {
-    this.method = {
-      "+": (a, b) => a + b,
-      "-": (a, b) => a - b,
-    };
-  }
+// class Calculator {
+//   constructor() {
+//     this.method = {
+//       "+": (a, b) => a + b,
+//       "-": (a, b) => a - b,
+//     };
+//   }
 
-  addMethod(operator, theFunction) {
-    this.method[operator] = theFunction;
-  }
-  calculate(string) {
-    let [firstNumber, sign, secondNumber] = string.split(" ");
-    firstNumber = +firstNumber; // convert to number
-    secondNumber = +secondNumber;
-    return this.method[sign](firstNumber, secondNumber);
-  }
-}
+//   addMethod(operator, theFunction) {
+//     this.method[operator] = theFunction;
+//   }
+//   calculate(string) {
+//     let [firstNumber, sign, secondNumber] = string.split(" ");
+//     firstNumber = +firstNumber; // convert to number
+//     secondNumber = +secondNumber;
+//     return this.method[sign](firstNumber, secondNumber);
+//   }
+// }
 
-const calc = new Calculator();
-console.log(calc.calculate("4 + 2")); // 6
-let powerCalc = new Calculator();
-powerCalc.addMethod("*", (a, b) => a * b);
-powerCalc.addMethod("/", (a, b) => a / b);
-powerCalc.addMethod("**", (a, b) => a ** b);
+// const calc = new Calculator();
+// console.log(calc.calculate("4 + 2")); // 6
+// let powerCalc = new Calculator();
+// powerCalc.addMethod("*", (a, b) => a * b);
+// powerCalc.addMethod("/", (a, b) => a / b);
+// powerCalc.addMethod("**", (a, b) => a ** b);
 
-let result = powerCalc.calculate("3 ** 3");
-console.log(result);
+// let result = powerCalc.calculate("3 ** 3");
+// console.log(result);
+
+// You have an array of user objects, each one has user.name. Write the code that converts it into an array of names.
+
+// For instance:
+
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let users = [john, pete, mary];
+
+let names = users.map((user) => user.name);
+/* ... your code */
+
+alert(names); // John, Pete, Mary
