@@ -271,7 +271,14 @@ console.log("============================Tasks============================");
 // For instance:
 
 function unique(arr) {
-  return [...new Set(arr)];
+  let newArray = [];
+  for (i = 0; i < arr.length; i++) {
+    if (!newArray.includes(arr[i])) {
+      newArray.push(arr[i]);
+    }
+  }
+  //return [...new Set(arr)]; // this would work properly but we are going to try another method.
+  return newArray;
 }
 
 let strings = [
@@ -284,6 +291,8 @@ let strings = [
   "Hare",
   "Hare",
   ":-O",
+  "Mbazi",
+  "Mbazi",
 ];
 
-alert(unique(strings)); // Hare, Krishna, :-O
+console.log(unique(strings)); // Hare, Krishna, :-O
