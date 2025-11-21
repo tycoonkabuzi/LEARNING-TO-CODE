@@ -270,29 +270,64 @@ console.log("============================Tasks============================");
 
 // For instance:
 
-function unique(arr) {
-  let newArray = [];
-  for (i = 0; i < arr.length; i++) {
-    if (!newArray.includes(arr[i])) {
-      newArray.push(arr[i]);
-    }
-  }
-  //return [...new Set(arr)]; // this would work properly but we are going to try another method.
-  return newArray;
-}
+// function unique(arr) {
+//   let newArray = [];
+//   for (i = 0; i < arr.length; i++) {
+//     if (!newArray.includes(arr[i])) {
+//       newArray.push(arr[i]);
+//     }
+//   }
+//   //return [...new Set(arr)]; // this would work properly but we are going to try another method.
+//   return newArray;
+// }
 
-let strings = [
-  "Hare",
-  "Krishna",
-  "Hare",
-  "Krishna",
-  "Krishna",
-  "Krishna",
-  "Hare",
-  "Hare",
-  ":-O",
-  "Mbazi",
-  "Mbazi",
+// let strings = [
+//   "Hare",
+//   "Krishna",
+//   "Hare",
+//   "Krishna",
+//   "Krishna",
+//   "Krishna",
+//   "Hare",
+//   "Hare",
+//   ":-O",
+//   "Mbazi",
+//   "Mbazi",
+// ];
+
+// console.log(unique(strings)); // Hare, Krishna, :-O
+
+// Let’s say we received an array of users in the form {id:..., name:..., age:... }.
+
+// Create a function groupById(arr) that creates an object from it, with id as the key, and array items as values.
+
+// For example:
+
+let users = [
+  { id: "john", name: "John Smith", age: 20 },
+  { id: "ann", name: "Ann Smith", age: 24 },
+  { id: "pete", name: "Pete Peterson", age: 31 },
 ];
+const groupById = (users) => {
+  //   let objectwithUsers = {};
+  //   users.forEach((element) => (objectwithUsers[element.id] = element));
+  //   return objectwithUsers;
+  //using reduce now
 
-console.log(unique(strings)); // Hare, Krishna, :-O
+  let theObject = users.reduce((prev, newElement) => {
+    prev[newElement.id] = newElement;
+    return prev;
+  }, {});
+  console.log(theObject);
+};
+let usersById = groupById(users);
+
+/*
+// after the call we should have:
+
+usersById = {
+  john: {id: 'john', name: "John Smith", age: 20},
+  ann: {id: 'ann', name: "Ann Smith", age: 24},
+  pete: {id: 'pete', name: "Pete Peterson", age: 31},
+}
+*/
