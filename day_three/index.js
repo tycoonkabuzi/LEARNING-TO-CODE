@@ -22,22 +22,55 @@
 // read() prompts for two values and saves them as object properties with names a and b respectively.
 // sum() returns the sum of saved values.
 // mul() multiplies saved values and returns the result.
-let calculator = {
-  a: 0,
-  b: 0,
+// let calculator = {
+//   a: 0,
+//   b: 0,
 
-  read() {
-    this.a = +prompt("What is the first number?");
-    this.b = +prompt("What is the second number?");
+//   read() {
+//     this.a = +prompt("What is the first number?");
+//     this.b = +prompt("What is the second number?");
+//   },
+//   sum() {
+//     return this.a + this.b;
+//   },
+//   mul() {
+//     return this.a * this.b;
+//   },
+// };
+
+// calculator.read();
+// alert(calculator.sum());
+// alert(calculator.mul());
+
+// Chaining
+// importance: 2
+// There’s a ladder object that allows you to go up and down:
+
+let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+    return this;
   },
-  sum() {
-    return this.a + this.b;
+  down() {
+    this.step--;
+    return this;
   },
-  mul() {
-    return this.a * this.b;
+  showStep: function () {
+    // shows the current step
+    alert(this.step);
+    return this;
   },
 };
+// Now, if we need to make several calls in sequence, we can do it like this:
 
-calculator.read();
-alert(calculator.sum());
-alert(calculator.mul());
+// ladder.up();
+// ladder.up();
+// ladder.down();
+// ladder.showStep(); // 1
+// ladder.down();
+// ladder.showStep(); // 0
+// Modify the code of up, down, and showStep to make the calls chainable, like this:
+
+ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
+// Such an approach is widely used across JavaScript libraries.
