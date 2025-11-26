@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Quiz</title>
+    <style>
+      .main {
+        background-color: rgb(234, 234, 234);
+        width: 20%;
+        text-align: center;
+        padding: 5%;
+        margin: auto;
+        margin-top: 10%;
+        font-family: "Jost", sans-serif;
+        font-style: normal;
+      }
+      .form {
+        margin: auto;
+      }
+      button {
+        background-color: rgb(100, 165, 38);
+        border-style: none;
+        padding: 10px;
+        color: white;
+      }
+      input {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Welcome to the quiz</h1>
+      <form action="" class="form" onsubmit="storeName(event)">
+        <p>What is your name?</p>
+        <input type="text" placeholder="eg:John Does" id="input" />
+        <button class="button">Submit</button>
+      </form>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
