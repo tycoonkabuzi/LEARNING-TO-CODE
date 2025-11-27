@@ -65,9 +65,16 @@ const generalQuiz = [
 const input = document.getElementById("input");
 
 let userName = null;
+let count = 0;
 function storeName(e) {
   e.preventDefault();
   userName = input.value;
   console.log(userName);
 }
 console.log(userName);
+
+// I am going to create a facility which will display the questions, whenever we click to next it shows the next questions
+
+function createQuestions() {}
+
+createQuestions();
