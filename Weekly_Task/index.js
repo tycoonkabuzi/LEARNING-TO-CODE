@@ -73,8 +73,6 @@ function storeName(e) {
 }
 console.log(userName);
 
-// I am going to create a facility which will display the questions, whenever we click to next it shows the next questions
+// I am going to create a facility which will display the questions, whenever we click to next it shows the next questions,dynamically
 
 function createQuestions() {}
-
-createQuestions();
