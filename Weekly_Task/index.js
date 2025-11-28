@@ -62,6 +62,9 @@ const generalQuiz = [
     answer: "C",
   },
 ];
+const main = document.querySelector(".main");
+const h1 = document.querySelector("h1");
+const form = document.querySelector("form");
 const input = document.getElementById("input");
 
 let userName = null;
@@ -70,9 +73,38 @@ function storeName(e) {
   e.preventDefault();
   userName = input.value;
   console.log(userName);
+  createQuestions();
 }
 console.log(userName);
 
 // I am going to create a facility which will display the questions, whenever we click to next it shows the next questions,dynamically
 
-function createQuestions() {}
+function createQuestions() {
+  const question = document.createElement("h1");
+  const form = document.createElement("form");
+  const containerRadio = document.createElement("div");
+  generalQuiz[0].options.forEach((option) => {
+    const options = document.createElement("input");
+    const label = document.createElement("label");
+    const containerOption = document.createElement("div");
+    containerOption.className = "container_option";
+    options.type = "radio";
+    label.textContent = option;
+    containerRadio.className = "container_radio";
+    containerOption.appendChild(options);
+    containerOption.appendChild(label);
+
+    containerRadio.appendChild(containerOption);
+  });
+  const nextButton = document.createElement("button");
+  nextButton.className = "button";
+
+  nextButton.innerText = "Next question";
+
+  question.innerText = generalQuiz[0].question;
+  main.appendChild(question);
+  form.appendChild(containerRadio);
+
+  form.appendChild(nextButton);
+  main.appendChild(form);
+}
