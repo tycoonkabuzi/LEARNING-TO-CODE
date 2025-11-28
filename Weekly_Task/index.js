@@ -78,36 +78,56 @@ function storeName(e) {
 console.log(userName);
 
 // I am going to create a facility which will display the questions, whenever we click to next it shows the next questions,dynamically
-
+let i = 0;
 function createQuestions() {
-  generalQuiz.forEach((question) => {
-    const questionElement = document.createElement("h1");
-    const form = document.createElement("form");
-    const containerRadio = document.createElement("div");
-    const nextButton = document.createElement("button");
-    nextButton.className = "button";
+  main.innerHTML = "";
+  const form = document.createElement("form");
+  const containerRadio = document.createElement("div");
+  const nextButton = document.createElement("button");
+  if (i >= generalQuiz.length) {
+    main.innerHTML = `<h1>Quiz Finished!</h1> <p> ${userName} you made ${count}/${generalQuiz.length}</>`;
+    return;
+  }
 
-    nextButton.innerText = "Next question";
-    question.options.forEach((option) => {
-      const options = document.createElement("input");
-      const label = document.createElement("label");
-      const containerOption = document.createElement("div");
-      containerOption.className = "container_option";
-      options.type = "radio";
-      options.name = "options";
-      label.textContent = option;
-      containerRadio.className = "container_radio";
-      containerOption.appendChild(options);
-      containerOption.appendChild(label);
+  const questionElement = document.createElement("h1");
 
-      containerRadio.appendChild(containerOption);
-    });
+  nextButton.className = "button";
 
-    questionElement.innerText = question.question;
+  nextButton.innerText = "Next question";
+  generalQuiz[i].options.forEach((option) => {
+    const options = document.createElement("input");
+    const label = document.createElement("label");
+    const containerOption = document.createElement("div");
+    containerOption.className = "container_option";
+    options.type = "radio";
+    options.name = "options";
+    options.value = option;
+    label.textContent = option;
+    containerRadio.className = "container_radio";
+    containerOption.appendChild(options);
+    containerOption.appendChild(label);
+    containerRadio.appendChild(containerOption);
+
+    questionElement.innerText = generalQuiz[i].question;
     main.appendChild(questionElement);
     form.appendChild(containerRadio);
 
     form.appendChild(nextButton);
-    main.appendChild(form);
+    nextButton.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const selected = form.querySelector('input[name="options"]:checked');
+      if (!selected) {
+        alert("Please select an answer to continue");
+        return;
+      }
+
+      if (selected.value.split(".")[0] === generalQuiz[i].answer) {
+        count++;
+      }
+      i++;
+      createQuestions();
+    });
   });
+  main.appendChild(form);
 }
