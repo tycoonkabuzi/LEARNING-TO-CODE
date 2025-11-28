@@ -80,31 +80,34 @@ console.log(userName);
 // I am going to create a facility which will display the questions, whenever we click to next it shows the next questions,dynamically
 
 function createQuestions() {
-  const question = document.createElement("h1");
-  const form = document.createElement("form");
-  const containerRadio = document.createElement("div");
-  generalQuiz[0].options.forEach((option) => {
-    const options = document.createElement("input");
-    const label = document.createElement("label");
-    const containerOption = document.createElement("div");
-    containerOption.className = "container_option";
-    options.type = "radio";
-    label.textContent = option;
-    containerRadio.className = "container_radio";
-    containerOption.appendChild(options);
-    containerOption.appendChild(label);
+  generalQuiz.forEach((question) => {
+    const questionElement = document.createElement("h1");
+    const form = document.createElement("form");
+    const containerRadio = document.createElement("div");
+    const nextButton = document.createElement("button");
+    nextButton.className = "button";
 
-    containerRadio.appendChild(containerOption);
+    nextButton.innerText = "Next question";
+    question.options.forEach((option) => {
+      const options = document.createElement("input");
+      const label = document.createElement("label");
+      const containerOption = document.createElement("div");
+      containerOption.className = "container_option";
+      options.type = "radio";
+      options.name = "options";
+      label.textContent = option;
+      containerRadio.className = "container_radio";
+      containerOption.appendChild(options);
+      containerOption.appendChild(label);
+
+      containerRadio.appendChild(containerOption);
+    });
+
+    questionElement.innerText = question.question;
+    main.appendChild(questionElement);
+    form.appendChild(containerRadio);
+
+    form.appendChild(nextButton);
+    main.appendChild(form);
   });
-  const nextButton = document.createElement("button");
-  nextButton.className = "button";
-
-  nextButton.innerText = "Next question";
-
-  question.innerText = generalQuiz[0].question;
-  main.appendChild(question);
-  form.appendChild(containerRadio);
-
-  form.appendChild(nextButton);
-  main.appendChild(form);
 }
