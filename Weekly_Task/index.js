@@ -126,7 +126,7 @@ function createQuestions() {
         count++;
       }
       i++;
-      createQuestions();
+      createQuestions(); // call the function again.
     });
   });
   main.appendChild(form);
