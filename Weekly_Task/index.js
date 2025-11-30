@@ -124,6 +124,7 @@ function createQuestions() {
 
       if (selected.value.split(".")[0] === generalQuiz[i].answer) {
         count++;
+        console.log(count);
       }
       i++;
       createQuestions(); // call the function again.
