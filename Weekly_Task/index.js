@@ -72,7 +72,11 @@ let count = 0;
 function storeName(e) {
   e.preventDefault();
   userName = input.value;
-  createQuestions(); // once the name is registered and stored we call our function generating the questions
+  if (!userName) {
+    alert("Write a valid name");
+  } else {
+    createQuestions(); // once the name is registered and stored we call our function generating the questions
+  }
 }
 
 // I am going to create a facility which will display the questions, whenever we click to next it shows the next questions,dynamically
@@ -82,6 +86,7 @@ function createQuestions() {
   const form = document.createElement("form");
   const containerRadio = document.createElement("div");
   const nextButton = document.createElement("button");
+  const trackerNumberOfQuestions = document.createElement("p");
   if (i >= generalQuiz.length) {
     main.innerHTML = `<h1>Quiz Finished!</h1> ${
       count <= generalQuiz.length / 2
@@ -106,10 +111,10 @@ function createQuestions() {
     options.value = option;
     label.textContent = option;
     containerRadio.className = "container_radio";
+    trackerNumberOfQuestions.innerText = `${i + "/" + generalQuiz.length}`;
     containerOption.appendChild(options);
     containerOption.appendChild(label);
     containerRadio.appendChild(containerOption);
-
     questionElement.innerText = generalQuiz[i].question;
     main.appendChild(questionElement);
     form.appendChild(containerRadio);
@@ -117,6 +122,7 @@ function createQuestions() {
     form.appendChild(nextButton);
   });
   main.appendChild(form);
+  main.appendChild(trackerNumberOfQuestions);
   nextButton.addEventListener("click", (e) => {
     e.preventDefault();
 
