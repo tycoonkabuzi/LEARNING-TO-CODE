@@ -72,10 +72,8 @@ let count = 0;
 function storeName(e) {
   e.preventDefault();
   userName = input.value;
-  console.log(userName);
-  createQuestions();
+  createQuestions(); // once the name is registered and stored we call our function generating the questions
 }
-console.log(userName);
 
 // I am going to create a facility which will display the questions, whenever we click to next it shows the next questions,dynamically
 let i = 0;
@@ -85,7 +83,11 @@ function createQuestions() {
   const containerRadio = document.createElement("div");
   const nextButton = document.createElement("button");
   if (i >= generalQuiz.length) {
-    main.innerHTML = `<h1>Quiz Finished!</h1> <p> ${userName} you made ${count}/${generalQuiz.length}</>`;
+    main.innerHTML = `<h1>Quiz Finished!</h1> ${
+      count <= generalQuiz.length / 2
+        ? "Unfortunately you failed "
+        : "Congratulations"
+    }<p> ${userName} you made ${count}/${generalQuiz.length}</>`;
     return;
   }
 
@@ -113,22 +115,23 @@ function createQuestions() {
     form.appendChild(containerRadio);
 
     form.appendChild(nextButton);
-    nextButton.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const selected = form.querySelector('input[name="options"]:checked');
-      if (!selected) {
-        alert("Please select an answer to continue");
-        return;
-      }
-
-      if (selected.value.split(".")[0] === generalQuiz[i].answer) {
-        count++;
-        console.log(count);
-      }
-      i++;
-      createQuestions(); // call the function again.
-    });
   });
   main.appendChild(form);
+  nextButton.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const selected = form.querySelector('input[name="options"]:checked');
+    if (!selected) {
+      alert("Please select an answer to continue");
+      return;
+    }
+
+    if (selected.value.split(".")[0] === generalQuiz[i].answer) {
+      count++;
+      console.log(selected.value.split(".")[0], generalQuiz[i].answer);
+    }
+    i++;
+    createQuestions(); // call the function again
+  });
+  console.log(count);
 }
