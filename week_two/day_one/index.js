@@ -3,13 +3,13 @@
 // defined by the recurrence relation
 
 const fibonacciSequence = (startingPoint) => {
-  let array = [];
   if (startingPoint === 0) return [0];
   if (startingPoint === 1) return [0, 1];
 
-  const seq = fibonacciSequence(n - 1);
-
-  return array;
+  const seq = fibonacciSequence(startingPoint - 1);
+  const nextNumber = seq[seq.length - 1] + seq[seq.length - 2];
+  seq.push(nextNumber);
+  return seq;
 };
 
 console.log(fibonacciSequence(10));
