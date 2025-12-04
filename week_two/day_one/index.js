@@ -13,3 +13,4 @@ const fibonacciSequence = (startingPoint) => {
 };
 
 console.log(fibonacciSequence(10));
+// we have 10-1= 9 this is sec. next number equals to 10+ 0;
