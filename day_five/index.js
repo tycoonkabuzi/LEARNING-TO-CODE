@@ -13,23 +13,25 @@
 // Binary search algorithm
 // here we break the data structure into two half and try to find the lement target element.
 
-let arr = [1, 3, 5, 7, 8, 9];
-let toBeFound = 1;
+// let arr = [1, 3, 5, 7, 8, 9];
+// let toBeFound = 1;
 
-function foundNumber(anArray, theNumberTobeFound) {
-  let start = 0;
-  let end = anArray.length - 1;
-  while (start <= end) {
-    let mid = Math.floor((start + end) / 2);
-    if (anArray[mid] == theNumberTobeFound)
-      return `the number ${
-        anArray[mid]
-      } has been found at positon ${anArray.indexOf(anArray[mid])} `;
-    else if (arr[mid] < theNumberTobeFound) {
-      start = mid + 1;
-    } else end = mid - 1;
-  }
-  return "The number was not found";
-}
+// function foundNumber(anArray, theNumberTobeFound) {
+//   let start = 0;
+//   let end = anArray.length - 1;
+//   while (start <= end) {
+//     let mid = Math.floor((start + end) / 2);
+//     if (anArray[mid] == theNumberTobeFound)
+//       return `the number ${
+//         anArray[mid]
+//       } has been found at positon ${anArray.indexOf(anArray[mid])} `;
+//     else if (arr[mid] < theNumberTobeFound) {
+//       start = mid + 1;
+//     } else end = mid - 1;
+//   }
+//   return "The number was not found";
+// }
 
-console.log(foundNumber(arr, toBeFound));
+// console.log(foundNumber(arr, toBeFound));
+
+// sorting in Javascript
